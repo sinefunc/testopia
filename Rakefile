@@ -8,7 +8,7 @@ begin
     gem.summary = %Q{Because laziness is the new cuil}
     gem.description = %Q{a collection of test helpers for Ohm, Sinatra, Rack}
     gem.email = "cyx.ucron@gmail.com"
-    gem.homepage = "http://github.com/cyx/testopia"
+    gem.homepage = "http://github.com/sinefunc/testopia"
     gem.authors = ["Cyril David"]
     gem.add_development_dependency "contest"
   end
