@@ -34,6 +34,16 @@ module Testopia
 
       def should_assert_member(att, set, invalid = '_SOME_FOOBAR_VALUE_')
         should_assert_error [att, :not_member], :given => invalid
+
+        set.each do |elem|
+          should "assert_member :%s, %s" % [att, elem] do
+            subject.send '%s=' % att, elem
+            subject.valid?
+
+            assert ! subject.errors.include?([att, :not_member]),
+              '%s expected to be valid with "%s"' % [att, elem]
+          end
+        end
       end
     end
   end
