@@ -31,6 +31,10 @@ module Testopia
       def should_assert_numeric(*atts)
         atts.each { |a| should_assert_error [a, :not_numeric], :given => 'aa' } 
       end
+
+      def should_assert_member(att, set, invalid = '_SOME_FOOBAR_VALUE_')
+        should_assert_error [att, :not_member], :given => invalid
+      end
     end
   end
 end
