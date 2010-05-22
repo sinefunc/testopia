@@ -206,7 +206,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
       
       subject { Person.new }
 
-      should_assert_member :gender, ["Male", "Female"]
+      should_assert_member :gender, ["Male", "Female"], ["Fail", "Here"]
     end
    
     test "succeeeds when assert_present defined" do

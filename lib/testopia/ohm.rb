@@ -32,8 +32,10 @@ module Testopia
         atts.each { |a| should_assert_error [a, :not_numeric], :given => 'aa' } 
       end
 
-      def should_assert_member(att, set, invalid = '_SOME_FOOBAR_VALUE_')
-        should_assert_error [att, :not_member], :given => invalid
+      def should_assert_member(att, set, invalid = ['_SOME_FOOBAR_VALUE_'])
+        Array(invalid).each do |value|
+          should_assert_error [att, :not_member], :given => value
+        end
 
         set.each do |elem|
           should "assert_member :%s, %s" % [att, elem] do

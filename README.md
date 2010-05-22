@@ -31,6 +31,29 @@ Examples?
       should_assert_error [:email, :not_email], :given => 'notemail'
     end
 
+    # I also added should_assert_member, which works if you have Ohm::Contrib 
+    # in your model
+    require 'ohm/contrib'
+
+    class Order
+      include Ohm::ExtraValidations
+
+      attribute :state
+
+      def validate
+        should_assert_member :state, %w{pending authorized declined}
+      end
+    end
+
+    class OrderTest < Test::Unit::TestCase
+      subject { Order.new }
+
+      should_assert_member :state, %w{pending authorized declined}
+
+      # You can even explicitly specify values for which it _should_ fail
+      should_assert_member :state, %w{pending authorized declined}, %w{Foo Bar}
+    end
+
 ### Note on Patches/Pull Requests
  
 * Fork the project.
