@@ -1,4 +1,9 @@
-require 'active_merchant'
+begin
+  require 'active_merchant'
+rescue LoadError
+  puts "!! In order to use Testopia::ActiveMerchant, ActiveMerchant must be installed."
+  puts "!! Type `[sudo] gem install active_merchant`"
+end
 
 module Testopia
   module ActiveMerchant

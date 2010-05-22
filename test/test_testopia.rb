@@ -1,7 +1,15 @@
 require 'helper'
 
 class TestTestopia < Test::Unit::TestCase
-  should "probably rename this file and start testing for real" do
-    flunk "hey buddy, you should probably rename this file and start testing for real"
+  test "autoloading of Ohm" do
+    assert_nothing_raised LoadError, NameError do
+      Testopia::Ohm
+    end
+  end
+
+  test "autoloading of ActiveMerchant" do
+    assert_nothing_raised LoadError, NameError do
+      Testopia::ActiveMerchant
+    end
   end
 end

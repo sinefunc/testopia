@@ -8,3 +8,41 @@ require 'testopia'
 
 class Test::Unit::TestCase
 end
+
+module FakeTestUnit
+  def self.included(base)
+    base.extend ClassMethods
+  end
+
+  module ClassMethods
+    def should(desc, &block)
+      shoulds << [desc, block]
+    end
+
+    def shoulds
+      @shoulds ||= []
+    end
+  end
+
+  def assert(condition, message)
+    asserts << condition
+  end
+
+  def asserts
+    @asserts ||= []
+  end
+
+  def failed
+    ! succeeded
+  end
+
+  def succeeded
+    asserts.all? { |assert| !! assert }
+  end
+
+  def run
+    self.class.shoulds.each do |desc, block|
+      instance_eval(&block)
+    end
+  end
+end
