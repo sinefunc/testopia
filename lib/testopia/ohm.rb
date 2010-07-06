@@ -11,6 +11,20 @@ module Testopia
         end
       end
       
+      def should_not_assert_error(pair, options = {})
+        value        = options[:given]
+        field, error = pair
+
+        should 'have no error asserting %s of %s given: %s' % [error, field, value] do
+          subject.send '%s=' % field, value
+
+          subject.valid?
+
+          assert !subject.errors.include?(pair),
+            '%s should not have a %s error' % [field, error]
+        end
+      end
+
       def should_assert_error(pair, options = {})
         value        = options[:given]
         field, error = pair
