@@ -25,7 +25,7 @@ module FakeTestUnit
   end
 
   def assert(condition, message)
-    asserts << condition
+    asserts << [condition, message]
   end
 
   def asserts
@@ -37,7 +37,11 @@ module FakeTestUnit
   end
 
   def succeeded
-    asserts.all? { |assert| !! assert }
+    asserts.all? { |assert, message| !! assert }
+  end
+
+  def messages
+    asserts.select { |assert, _| !assert }.map { |_, message| message }
   end
 
   def run

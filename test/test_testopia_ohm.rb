@@ -22,7 +22,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
   end
 
   describe "should_assert_error macro" do
-    class SuccessfulContext
+    class SuccessfulContext1
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -41,13 +41,13 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
 
     test "properly determines the successful scenario" do
-      context = SuccessfulContext.new
+      context = SuccessfulContext1.new
       context.run
-     
+      
       assert context.succeeded
     end
 
-    class FailedContext
+    class FailedContext1
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -62,7 +62,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
 
     test "properly determines the failed scenario" do
-      context = FailedContext.new
+      context = FailedContext1.new
       context.run
      
       assert context.failed
@@ -70,7 +70,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
   end
   
   describe "should_assert_present macro" do
-    class FailedContext
+    class FailedContext2
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -85,13 +85,13 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
    
     test "fails when no assert_present defined" do
-      context = FailedContext.new
+      context = FailedContext2.new
       context.run
      
       assert context.failed
     end
 
-    class SuccessfulContext
+    class SuccessfulContext2
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -110,7 +110,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
    
     test "succeeeds when assert_present defined" do
-      context = SuccessfulContext.new
+      context = SuccessfulContext2.new
       context.run
      
       assert context.succeeded
@@ -118,7 +118,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
   end
 
   describe "should_assert_numeric macro" do
-    class FailedContext
+    class FailedContext3
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -133,13 +133,13 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
    
     test "fails when no assert_present defined" do
-      context = FailedContext.new
+      context = FailedContext3.new
       context.run
      
       assert context.failed
     end
 
-    class SuccessfulContext
+    class SuccessfulContext3
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -158,7 +158,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
    
     test "succeeeds when assert_present defined" do
-      context = SuccessfulContext.new
+      context = SuccessfulContext3.new
       context.run
      
       assert context.succeeded
@@ -166,7 +166,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
   end
 
   describe "should_assert_member macro" do
-    class FailedContext
+    class FailedContext4
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -183,13 +183,13 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
    
     test "fails when no assert_present defined" do
-      context = FailedContext.new
+      context = FailedContext4.new
       context.run
       
       assert context.failed
     end
 
-    class SuccessfulContext
+    class SuccessfulContext5
       include FakeTestUnit
 
       class Person < Ohm::Model
@@ -210,7 +210,7 @@ class TestopiaOhmTest < Test::Unit::TestCase
     end
    
     test "succeeeds when assert_present defined" do
-      context = SuccessfulContext.new
+      context = SuccessfulContext5.new
       context.run
      
       assert context.succeeded

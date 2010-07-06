@@ -15,7 +15,7 @@ module Testopia
         value        = options[:given]
         field, error = pair
 
-        should 'assert %s of %s' % [error, field] do
+        should 'assert %s of %s given: %s' % [error, field, value] do
           subject.send '%s=' % field, value
 
           assert ! subject.valid?, '%s should not be valid' % subject.inspect
